@@ -9,7 +9,11 @@ cp<!doctype html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>5 Estilos de Colores</title>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>6 Estilos de Colores</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -19,6 +23,7 @@ cp<!doctype html>
 
     h1 {
       margin-top: 50px;
+      transition: color 0.6s, font-size 0.6s, font-family 0.6s;
     }
 
     button {
@@ -91,7 +96,42 @@ cp<!doctype html>
     .estilo5 button:hover {
       background-color: #4a148c;
     }
+
+    /* ====== NUEVO ESTILO VERDE ====== */
+    .estilo6 {
+      background-color: #f1f8e9;
+      color: #2e7d32;
+    }
+    .estilo6 h1 {
+      color: #1b5e20;
+      font-family: "Georgia", serif;
+      font-size: 48px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+    .estilo6 button {
+      background-color: #66bb6a;
+      color: white;
+    }
+    .estilo6 button:hover {
+      background-color: #2e7d32;
+    }
   </style>
 </head>
-</BODY>
+<body class="estilo1">
+  <h1>Ejemplo de 6 estilos distintos</h1>
+  <p>Haz clic en un botón para cambiar el estilo de la página:</p>
+
+  <button onclick="cambiarEstilo('estilo1')">Estilo Azul</button>
+  <button onclick="cambiarEstilo('estilo2')">Estilo Rosa</button>
+  <button onclick="cambiarEstilo('estilo3')">Estilo Naranja</button>
+  <button onclick="cambiarEstilo('estilo4')">Estilo Verde</button>
+  <button onclick="cambiarEstilo('estilo5')">Estilo Morado</button>
+  <button onclick="cambiarEstilo('estilo6')">Estilo Verde con Título Especial</button>
+
+  <script>
+    function cambiarEstilo(estilo) {
+      document.body.className = estilo;
+    }
+  </script>
+</body>
 </html>
