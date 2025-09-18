@@ -7,53 +7,56 @@ cp<!doctype html>
     <title>Bioexma</title>
     <!DOCTYPE html>
 <html lang="es">
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Teoría Celular</title>
   <style>
     body {
+      margin: 0;
+      height: 100vh;
+      background-color: #1b5e20; /* Fondo verde */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      margin-top: 40px;
-      background: #f4f6f7;
     }
 
-    img {
-      transition: width 0.5s, height 0.5s;
-      border-radius: 10px;
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
     }
 
-    button {
-      margin: 10px;
-      padding: 12px 18px;
-      font-size: 14px;
+    .video-container {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      aspect-ratio: 16/9;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
       border: none;
-      border-radius: 6px;
-      background-color: #00796b;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #004d40;
     }
   </style>
 </head>
 <body>
-  <h1>Cambiar tamaño de la imagen</h1>
-  
-  <!-- Tu imagen -->
-  <img id="celula" src="43ebaf0d-64e1-457c-8642-4f32d2c3132d.png" width="300" alt="División celular">
+  <h1>Teoría Celular - Video Explicativo</h1>
 
-  <br><br>
-  <!-- Botones para cambiar tamaño -->
-  <button onclick="cambiarTamaño(200)">Pequeño</button>
-  <button onclick="cambiarTamaño(300)">Mediano</button>
-  <button onclick="cambiarTamaño(500)">Grande</button>
-  <button onclick="cambiarTamaño(700)">Muy grande</button>
-
-  <script>
-    function cambiarTamaño(nuevoAncho) {
-      document.getElementById("celula").width = nuevoAncho;
-    }
-  </script>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/MAOuHuQ8ilE" 
+            title="Teoría Celular"
+            allowfullscreen>
+    </iframe>
+  </div>
 </body>
 </html>
