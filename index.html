@@ -7,130 +7,52 @@ cp<!doctype html>
     <title>Bioexma</title>
     <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>6 Estilos de Colores</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      transition: background-color 0.6s, color 0.6s;
+      margin-top: 40px;
+      background: #f4f6f7;
     }
 
-    h1 {
-      margin-top: 50px;
-      transition: color 0.6s, font-size 0.6s, font-family 0.6s;
+    img {
+      transition: width 0.5s, height 0.5s;
+      border-radius: 10px;
     }
 
     button {
       margin: 10px;
-      padding: 12px 20px;
+      padding: 12px 18px;
+      font-size: 14px;
       border: none;
-      border-radius: 8px;
-      font-size: 16px;
+      border-radius: 6px;
+      background-color: #00796b;
+      color: white;
       cursor: pointer;
-      transition: background-color 0.4s, color 0.4s;
+      transition: background-color 0.3s;
     }
 
-    /* ====== Estilos ====== */
-    .estilo1 {
-      background-color: #e3f2fd;
-      color: #0d47a1;
-    }
-    .estilo1 button {
-      background-color: #1565c0;
-      color: white;
-    }
-    .estilo1 button:hover {
-      background-color: #0d47a1;
-    }
-
-    .estilo2 {
-      background-color: #fce4ec;
-      color: #880e4f;
-    }
-    .estilo2 button {
-      background-color: #d81b60;
-      color: white;
-    }
-    .estilo2 button:hover {
-      background-color: #880e4f;
-    }
-
-    .estilo3 {
-      background-color: #fff3e0;
-      color: #e65100;
-    }
-    .estilo3 button {
-      background-color: #fb8c00;
-      color: white;
-    }
-    .estilo3 button:hover {
-      background-color: #e65100;
-    }
-
-    .estilo4 {
-      background-color: #e8f5e9;
-      color: #1b5e20;
-    }
-    .estilo4 button {
-      background-color: #43a047;
-      color: white;
-    }
-    .estilo4 button:hover {
-      background-color: #1b5e20;
-    }
-
-    .estilo5 {
-      background-color: #ede7f6;
-      color: #4a148c;
-    }
-    .estilo5 button {
-      background-color: #7b1fa2;
-      color: white;
-    }
-    .estilo5 button:hover {
-      background-color: #4a148c;
-    }
-
-    /* ====== NUEVO ESTILO VERDE ====== */
-    .estilo6 {
-      background-color: #f1f8e9;
-      color: #2e7d32;
-    }
-    .estilo6 h1 {
-      color: #1b5e20;
-      font-family: "Georgia", serif;
-      font-size: 48px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-    }
-    .estilo6 button {
-      background-color: #66bb6a;
-      color: white;
-    }
-    .estilo6 button:hover {
-      background-color: #2e7d32;
+    button:hover {
+      background-color: #004d40;
     }
   </style>
 </head>
-<body class="estilo1">
-  <h1>Ejemplo de 6 estilos distintos</h1>
-  <p>Haz clic en un botón para cambiar el estilo de la página:</p>
+<body>
+  <h1>Cambiar tamaño de la imagen</h1>
+  
+  <!-- Tu imagen -->
+  <img id="celula" src="43ebaf0d-64e1-457c-8642-4f32d2c3132d.png" width="300" alt="División celular">
 
-  <button onclick="cambiarEstilo('estilo1')">Estilo Azul</button>
-  <button onclick="cambiarEstilo('estilo2')">Estilo Rosa</button>
-  <button onclick="cambiarEstilo('estilo3')">Estilo Naranja</button>
-  <button onclick="cambiarEstilo('estilo4')">Estilo Verde</button>
-  <button onclick="cambiarEstilo('estilo5')">Estilo Morado</button>
-  <button onclick="cambiarEstilo('estilo6')">Estilo Verde con Título Especial</button>
+  <br><br>
+  <!-- Botones para cambiar tamaño -->
+  <button onclick="cambiarTamaño(200)">Pequeño</button>
+  <button onclick="cambiarTamaño(300)">Mediano</button>
+  <button onclick="cambiarTamaño(500)">Grande</button>
+  <button onclick="cambiarTamaño(700)">Muy grande</button>
 
   <script>
-    function cambiarEstilo(estilo) {
-      document.body.className = estilo;
+    function cambiarTamaño(nuevoAncho) {
+      document.getElementById("celula").width = nuevoAncho;
     }
   </script>
 </body>
