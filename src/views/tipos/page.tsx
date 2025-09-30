@@ -1,8 +1,49 @@
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 import procariota from '../../assets/img/procariota.png';
+import { Navigation, Pagination } from 'swiper/modules';
+
+import { useState } from 'react';
 export default function TiposDeCelula() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+      const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? items.length - 1 : prev - 1
+    );
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === items.length - 1 ? 0 : prev + 1
+    );
+  };
+
+    const items = [
+    {
+      titulo: "Membrana celular",
+      texto:
+        "Tanto las células eucariotas como las procariotas poseen una bicapa lipídica, que es una disposición de fosfolípidos y proteínas que actúa como una barrera selectiva entre el entorno interno y externo de la célula.",
+    },
+    {
+      titulo: "Material genético",
+      texto:
+        "Tanto las células eucariotas como las procariotas utilizan el ácido desoxirribonucleico (ADN) como base de su información genética. Este material genético es necesario para regular e informar la función celular mediante la creación de ARN por transcripción, seguida de la generación de proteínas por traducción.",
+    },
+    {
+      titulo: "Ribosomas",
+      texto:
+        "Los ribosomas facilitan la traducción del ARN y la creación de proteínas, lo cual es esencial para el funcionamiento de las células eucariotas y procariotas.",
+    },
+    {
+      titulo: "Citoplasma",
+      texto:
+        "El citoplasma es el medio en el que tienen lugar las reacciones bioquímicas de la célula, cuyo componente principal es el citosol. En las células eucariotas, el citoplasma comprende todo lo que se encuentra entre la membrana plasmática y la envoltura nuclear, incluyendo los orgánulos; el material dentro del núcleo se denomina nucleoplasma. En las procariotas, el citoplasma abarca todo lo que se encuentra dentro de la membrana plasmática, incluyendo el citoesqueleto y el material genético.",
+    },
+  ];
+
   return (
     <section className="flex flex-col gap-6 p-4">
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-14xl gap-4">
         <div className="font-semibold flex flex-col bg-[#6bc4b077] rounded-2xl p-6 justify-center shadow-md h-64">
           <h1 className="sm:text-3xl md:text-5xl font-bold mb-4 text-gray-800 text-center">Tipos de Células</h1>
           <p className="sm:text-3xl md:text-2xl text-gray-700"></p>
@@ -10,33 +51,111 @@ export default function TiposDeCelula() {
         </div>
       </div>
       <div className="bg-white rounded-xl p-6 shadow-sm mt-4 ">
-         <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Importancia de la teoría celular en la biología y medicina.</h3>
-            <p className="mb-4" >
+         <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4"></h3>
+            <p className="mb-4 text-lg leading-relaxed" >
                 Los eucariotas son organismos cuyas células poseen un núcleo encerrado en una membrana celular, lo que constituye uno de los tres dominios de la vida: el eucariota.
                   Incluyen organismos multicelulares como plantas, animales y hongos. Las bacterias y las arqueas, los otros dos dominios de la vida, son células procariotas. Carecen de compartimentos celulares delimitados por membranas, como el núcleo.
             </p>
-
-        <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Similitudes entre células eucariotas y procariotas</h3>
-            <div className="grid md:grid-cols-3 gap-4 mb-8">
-                <div className="bg-white p-4 rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-300 hover:scale-[1.02]">
-                    <h4 className="font-bold text-lg mb-2 text-gray-800">Membrana celular</h4>
-                    <p className="text-gray-600">Tanto las células eucariotas como las procariotas poseen una bicapa lipídica, que es una disposición de fosfolípidos y proteínas que actúa como una barrera selectiva entre el entorno interno y externo de la célula.</p>
-                </div>
-                
-                <div className="bg-white p-4 rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-300 hover:scale-[1.02]">
-                    <h4 className="font-bold text-lg mb-2 text-gray-800">Material genético</h4>
-                    <p className="text-gray-600">Tanto las células eucariotas como las procariotas utilizan el ácido desoxirribonucleico (ADN) como base de su información genética. Este material genético es necesario para regular e informar la función celular mediante la creación de ARN por transcripción, seguida de la generación de proteínas por traducción.</p>
-                </div>
-                
-                <div className="bg-white p-4 rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-300 hover:scale-[1.02]">
-                    <h4 className="font-bold text-lg mb-2 text-gray-800">Ribosomas</h4>
-                    <p className="text-gray-600">Los ribosomas facilitan la traducción del ARN y la creación de proteínas, lo cual es esencial para el funcionamiento de las células eucariotas y procariotas.</p>
-                </div>
-                <div className="bg-white p-4 rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-300 hover:scale-[1.02]">
-                    <h4 className="font-bold text-lg mb-2 text-gray-800">Citoplasma</h4>
-                    <p className="text-gray-600">El citoplasma es el medio en el que tienen lugar las reacciones bioquímicas de la célula, cuyo componente principal es el citosol. En las células eucariotas, el citoplasma comprende todo lo que se encuentra entre la membrana plasmática y la envoltura nuclear, incluyendo los orgánulos; el material dentro del núcleo se denomina nucleoplasma. En las procariotas, el citoplasma abarca todo lo que se encuentra dentro de la membrana plasmática, incluyendo el citoesqueleto y el material genético.</p>
-                </div>
+            <div>
+            <p className='text-2xl font-semibold text-gray-800 mt-8 mb-4  pb-2' >Existen dos tipos principales de células:</p>
+    
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 justify-center">
+            <div className="bg-blue-50 p-5 rounded-lg shadow-sm flex flex-col transition-all duration-300 hover:scale-[1.02]">
+              <div className="font-bold text-blue-600">Células procariotas:</div>
+              <div className="text-gray-600">Son células simples, sin núcleo definido, y su material genético está
+                disperso en el citoplasma. Ejemplos: bacterias y arqueas.</div>
+              <strong></strong>
+              <div className="flex flex-col justify-center shadow-lg rounded-xl overflow-hidden h-[500px] mt-2">
+                <iframe
+                  className="h-full"
+                  title="EVE3D - Célula Procariota"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; fullscreen; xr-spatial-tracking"
+                  xr-spatial-tracking
+                  execution-while-out-of-viewport
+                  execution-while-not-rendered
+                  web-share
+                  
+                  src="https://sketchfab.com/models/5a7917054d26462ba1b49a4ce2d3b7ae/embed"
+                  ></iframe>
+              </div>
+    
             </div>
+            <div className="bg-blue-50 p-5 rounded-lg shadow-sm transition-all duration-300 hover:scale-[1.02] ">
+              <div className="font-bold text-blue-600">Células eucariotas:</div>
+              <div className="text-gray-500">Son más complejas y tienen un núcleo definido que contiene el ADN.
+                Se encuentran en plantas, animales, hongos y protistas.</div>
+              <strong></strong>
+              <div className="flex flex-col justify-center shadow-lg rounded-xl overflow-hidden h-[500px] mt-2">
+                <iframe
+                  className="h-full"
+                  title="EVE3D Célula Eucariota Animal"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; fullscreen; xr-spatial-tracking"
+                  xr-spatial-tracking
+                  execution-while-out-of-viewport
+                  execution-while-not-rendered
+                  web-share
+                  
+                  src="https://sketchfab.com/models/fb3311da5c9a4572bda870f6d356d83a/embed"
+                  ></iframe>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+        </div> 
+<div className='bg-purple-50 p-4 rounded-lg mb-6 text-center'>
+
+        <h3 className="text-2xl font-semibold text-purple-900 mt-8 mb-4">Similitudes entre células eucariotas y procariotas</h3>
+    <div className="relative w-full max-w-3xl mx-auto">
+      {/* Contenedor del slide */}
+      <div className="overflow-hidden rounded-2xl  shadow-md">
+        <div
+          className="flex transition-transform duration-500"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+          {items.map((item, index) => (
+            <div key={index} className="w-full flex-shrink-0 p-6 bg-white">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">
+                {item.titulo}
+              </h4>
+              <p className="text-gray-600">{item.texto}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Botones de navegación */}
+      <button
+        onClick={prevSlide}
+        className="absolute md:-left-20 sm:left-2 top-1/2 -translate-y-1/2 bg-white  rounded-full p-2 shadow hover:bg-gray-100"
+        >
+        ◀
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute md:-right-20 sm:right-2 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-gray-100"
+        >
+        ▶
+      </button>
+
+      {/* Indicadores */}
+      <div className="flex justify-center mt-4 space-x-2">
+        {items.map((_, index) => (
+          <button
+          key={index}
+          onClick={() => setCurrentIndex(index)}
+          className={`w-3 h-3 rounded-full ${
+            index === currentIndex ? "bg-gray-800" : "bg-gray-400"
+          }`}
+          />
+        ))}
+      </div>
+        </div>
+    </div>
          <div>
             <h3 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Disposición celular </h3>
             <p className="mb-4" >
@@ -159,55 +278,6 @@ genético que es una mezcla del genoma de los progenitores, y durante este proce
 un gran bucle único conocido como el cromosoma circular. El nucleoide y otras características frecuentemente observadas de los procariontes se muestran en el diagrama siguiente del corte de una bacteria con forma de bastón.
             </p>
           </div>
-         <p className='text-2xl font-semibold text-gray-800 mt-8 mb-4  pb-2' >Existen dos tipos principales de células:</p>
-
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 justify-center">
-          <div className="bg-yellow-50 p-5 rounded-lg shadow-sm flex flex-col transition-all duration-300 hover:scale-[1.02]">
-            <div className="font-bold text-yellow-600">Células procariotas:</div>
-            <div className="text-gray-600">Son células simples, sin núcleo definido, y su material genético está
-              disperso en el citoplasma. Ejemplos: bacterias y arqueas.</div>
-            <strong></strong>
-            <div className="flex flex-col justify-center shadow-lg rounded-xl overflow-hidden h-[500px] mt-2">
-              <iframe
-                className="h-full"
-                title="EVE3D - Célula Procariota"
-                frameBorder="0"
-                allowFullScreen
-                allow="autoplay; fullscreen; xr-spatial-tracking"
-                xr-spatial-tracking
-                execution-while-out-of-viewport
-                execution-while-not-rendered
-                web-share
-
-                src="https://sketchfab.com/models/5a7917054d26462ba1b49a4ce2d3b7ae/embed"
-              ></iframe>
-            </div>
-
-          </div>
-          <div className="bg-yellow-50 p-5 rounded-lg shadow-sm transition-all duration-300 hover:scale-[1.02] ">
-            <div className="font-bold text-yellow-600">Células eucariotas:</div>
-            <div className="text-gray-500">Son más complejas y tienen un núcleo definido que contiene el ADN.
-              Se encuentran en plantas, animales, hongos y protistas.</div>
-            <strong></strong>
-            <div className="flex flex-col justify-center shadow-lg rounded-xl overflow-hidden h-[500px] mt-2">
-              <iframe
-                className="h-full"
-                title="EVE3D Célula Eucariota Animal"
-                frameBorder="0"
-                allowFullScreen
-                allow="autoplay; fullscreen; xr-spatial-tracking"
-                xr-spatial-tracking
-                execution-while-out-of-viewport
-                execution-while-not-rendered
-                web-share
-
-                src="https://sketchfab.com/models/fb3311da5c9a4572bda870f6d356d83a/embed"
-              ></iframe>
-            </div>
-          </div>
-
-        </div>
-      </div>
 
 
     </section>
