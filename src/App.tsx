@@ -11,6 +11,7 @@ import TrasnporteCelular from './views/transporte/trasnporte'
 import ComparacionCelular from './views/comparacion/comparacion'
 import ScrollToTop from './components/scrolltop'
 import Chatbot from './components/chatbot'
+import About from './views/about/about'
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
           <Route path='/reproduccion' element={<ReproduccionCelular/>}></Route>
           <Route path='/transporte' element={<TrasnporteCelular/>}></Route>
           <Route path='/comparacion' element={<ComparacionCelular/>}></Route>
+          <Route path='/about' element={<About/>}></Route>
         </Routes>
         </div>
       </section>
