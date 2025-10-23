@@ -12,6 +12,10 @@ import ComparacionCelular from './views/comparacion/comparacion'
 import ScrollToTop from './components/scrolltop'
 import Chatbot from './components/chatbot'
 import About from './views/about/about'
+import Navbar from './components/navbar/navbar'
+import Obsta from './views/about/obsta'
+import Mejoras from './views/about/mejoras'
+import Tecnologias from './views/about/tecnologi'
 
 function App() {
 
@@ -22,7 +26,7 @@ function App() {
     <div className='flex h-screen '>
     <ScrollToTop/>
     <Sidebar></Sidebar>
-    
+  
       <section className="flex-1 overflow-y-auto p-4 md:p-6 bg-[#c9f1e25b]  ">
         <div className=' bg-[#ffffff] p-4 rounded-2xl '>
         <Routes>
@@ -36,6 +40,10 @@ function App() {
           <Route path='/transporte' element={<TrasnporteCelular/>}></Route>
           <Route path='/comparacion' element={<ComparacionCelular/>}></Route>
           <Route path='/about' element={<About/>}></Route>
+          <Route path='/obsta' element={<Obsta/>}></Route>
+          <Route path='/mejoras'element={<Mejoras/>}></Route>
+          <Route path='/tecnologi' element={<Tecnologias/>}></Route>
+
         </Routes>
         </div>
       </section>

@@ -1,14 +1,31 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
 
 export default function Chatbot() {
-  const apiKey=import.meta.env.VITE_API_CHAT;
+  const apiKey = import.meta.env.VITE_API_CHAT;
+
   const [messages, setMessages] = useState([
-    { role: "system", content: "Soy tu asistente virtual. ¿En qué puedo ayudarte?" }
+    {
+      role: "system",
+      content:
+        "Eres un asistente experto en Teoría celular. Solo debes responder preguntas y hablar sobre el tema de las células: su estructura, funciones, tipos, organelos, procesos celulares, etc. Si el usuario pregunta sobre algo fuera de este tema, responde educadamente que solo puedes hablar sobre las células."
+    },
+    {
+      role: "assistant",
+      content: "Soy tu asistente virtual especializado en Teoría celular. ¿Qué te gustaría saber sobre las células?"
+    }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+
+  // Ref para el contenedor de mensajes (para el auto-scroll)
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto scroll al final cuando hay nuevos mensajes
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -23,10 +40,10 @@ export default function Chatbot() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}` // <-- pon tu token aquí
+          Authorization: `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-          messages: [{ role: "user", content: input }],
+          messages: newMessages,
           model: "meta-llama/Llama-3.1-8B-Instruct:novita",
           stream: false
         })
@@ -38,7 +55,10 @@ export default function Chatbot() {
       setMessages([...newMessages, { role: "assistant", content: botReply }]);
     } catch (error) {
       console.error(error);
-      setMessages([...newMessages, { role: "assistant", content: "Error al conectar con el modelo." }]);
+      setMessages([
+        ...newMessages,
+        { role: "assistant", content: "Error al conectar con el modelo." }
+      ]);
     } finally {
       setLoading(false);
     }
@@ -46,47 +66,49 @@ export default function Chatbot() {
 
   return (
     <>
-    {/* <button className="fixed bottom-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-full cursor-pointer"> abrir chat</button> */}
-    <input type="checkbox" id="toggle-chat" className="peer hidden" />
-        <label htmlFor="toggle-chat" 
-        className="fixed bottom-4 right-4 bg-amber-400 text-white px-4 py-2 rounded-full cursor-pointer hover:bg-amber-500 h-10 w-40 text-center shadow-lg">
+      <input type="checkbox" id="toggle-chat" className="peer hidden" />
+      <label
+        htmlFor="toggle-chat"
+        className="fixed bottom-4 right-4 bg-amber-400 text-white px-4 py-2 rounded-full cursor-pointer hover:bg-amber-500 h-10 w-40 text-center shadow-lg"
+      >
         💬 Chat
-        </label>
+      </label>
 
-    <div className="hidden peer-checked:flex fixed bottom-16 right-4 w-84 h-1/2  bg-white  rounded-lg shadow-xl/25 flex-col max-w-2xl mx-auto p-4 overflow-auto">
-      <div className="flex-1 overflow-y-auto space-y-2 mb-4">
-        {messages.map((msg, i) => (
+      <div className="hidden peer-checked:flex fixed bottom-16 right-4 w-84 h-1/2 bg-white rounded-lg shadow-xl flex-col max-w-2xl mx-auto p-4 overflow-auto">
+        <div className="flex-1 overflow-y-auto space-y-2 mb-4">
+          {messages.map((msg, i) => (
             <div
-            key={i}
-            className={`p-3 rounded-2xl shadow-md max-w-xs whitespace-pre-wrap ${
+              key={i}
+              className={`p-3 rounded-2xl shadow-md max-w-xs whitespace-pre-wrap ${
                 msg.role === "user"
-                ? "bg-[#6bc4b077] self-end"
-                : "bg-gray-200 text-gray-900 self-start"
-            }`}
+                  ? "bg-[#6bc4b077] self-end"
+                  : "bg-gray-200 text-gray-900 self-start"
+              }`}
             >
-            {msg.content}
-          </div>
-        ))}
-        {loading && <p className="text-gray-500">Escribiendo...</p>}
-      </div>
+              {msg.content}
+            </div>
+          ))}
+          {loading && <p className="text-gray-500">Escribiendo...</p>}
+          <div ref={chatEndRef} /> {/* <- Aquí hace el scroll */}
+        </div>
 
-      <div className="flex gap-2">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          placeholder="Escribe tu mensaje..."
-          className="flex-1 p-3 border border-gray-300 rounded-2xl shadow-sm focus:outline-none"
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+            placeholder="Escribe tu mensaje..."
+            className="flex-1 p-3 border border-gray-300 rounded-2xl shadow-sm focus:outline-none"
           />
-        <button
-          onClick={sendMessage}
-          className="px-4 py-2 bg-blue-500 text-white rounded-2xl shadow-md hover:bg-blue-700"
+          <button
+            onClick={sendMessage}
+            className="px-4 py-2 bg-blue-500 text-white rounded-2xl shadow-md hover:bg-blue-700"
           >
-          Enviar
-        </button>
+            Enviar
+          </button>
+        </div>
       </div>
-    </div>
-</>
+    </>
   );
 }

@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router';
 import logo from '../../assets/img/logo.png';
 import fondo2 from '../../assets/img/fondo2.jpg';
-
+import logoColsam from '../../assets/LOGOCOLSAM.png';
 export default function Sidebar()  {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
+  const [IsShowAbout, setIsShowAbout] = useState(false);
   
   useEffect(() => {
     const handleResize = () => {
@@ -27,6 +27,9 @@ export default function Sidebar()  {
     }
   };
 
+  const showAbout = () => {
+    setIsShowAbout(!IsShowAbout);
+  }
   const menuItems = [
     { path: '/teoria', text: 'Teoría Celular' },
     { path: '/tipos de celula', text: 'Tipos de Célula' },
@@ -36,6 +39,8 @@ export default function Sidebar()  {
     { path: '/reproduccion', text: 'Reproducción Celular' },
     { path: '/transporte', text: 'Transporte Celular' },
     { path: '/comparacion', text: 'Comparación Celular' },
+    
+
   ];
 
   return (
@@ -101,11 +106,35 @@ export default function Sidebar()  {
                 >
                   {item.text}
                 </NavLink>
+               
               </li>
             ))}
+            <li className="mt-2 first:mt-0">
+              <div onClick={() => showAbout()} className='flex items-center py-3 px-4 rounded-lg transition-all duration-300 text-[#F2F2F2] text-base  hover:bg-white/20 hover:-translate-x-1 hover:shadow-md '> 
+                <button >Sobre Nosotros</button>
+              </div>
+            </li>
           </ul>
+    <div className='flex justify-center m-4'>
+          <img src={logoColsam} className='h-20'></img>
+    </div>
         </nav>
       </aside>
+  
+  {
+    IsShowAbout && (
+    <nav className="  bg-[#29967A] shadow-md p-4 flex justify-between items-center">
+      
+          <ul className="list-none rounded-t-3xl rounded-2xl  space-x-6 text-white font-semibold">
+              <li><a href="/tecnologi" className="flex items-center py-3 px-4 rounded-lg transition-all duration-300 text-[#F2F2F2] text-base  hover:bg-white/20 hover:-translate-x-1 hover:shadow-md">Tecnologías Utilizadas</a></li>
+              <li><a href="/about" className="flex items-center py-3 px-4 rounded-lg transition-all duration-300 text-[#F2F2F2] text-base  hover:bg-white/20 hover:-translate-x-1 hover:shadow-md">Sobre Nosotras</a></li>
+              <li><a href="/obsta" className="flex items-center py-3 px-4 rounded-lg transition-all duration-300 text-[#F2F2F2] text-base  hover:bg-white/20 hover:-translate-x-1 hover:shadow-md">Retos y Obstáculos</a></li>
+              <li><a href="/mejoras" className="flex items-center py-3 px-4 rounded-lg transition-all duration-300 text-[#F2F2F2] text-base  hover:bg-white/20 hover:-translate-x-1 hover:shadow-md">Evolución y Mejoras</a></li>
+          </ul>
+      </nav>
+
+      )
+    }
 
       {/* Overlay para móvil */}
       {isOpen && isMobile && (

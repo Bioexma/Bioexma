@@ -1,7 +1,6 @@
 
-import { Swiper, SwiperSlide } from 'swiper/react';
 import procariota from '../../assets/img/procariota.png';
-import { Navigation, Pagination } from 'swiper/modules';
+
 
 import { useState } from 'react';
 export default function TiposDeCelula() {
