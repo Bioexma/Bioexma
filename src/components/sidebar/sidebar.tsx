@@ -96,8 +96,11 @@ export default function Sidebar()  {
             {menuItems.map((item) => (
               <li key={item.path} className="mt-2 first:mt-0">
                 <NavLink
+
                   to={item.path}
-                  onClick={handleNavClick}
+                  onClick={()=>{ handleNavClick;
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                   }}
                   className={({ isActive }) =>
                     `flex items-center py-3 px-4 rounded-lg transition-all duration-300 text-[#F2F2F2] text-base  hover:bg-white/20 hover:-translate-x-1 hover:shadow-md ${
                       isActive ? ' bg-white/10 font-bold' : ''

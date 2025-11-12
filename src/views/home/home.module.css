@@ -1,0 +1,161 @@
+@keyframes prueba {
+  0% {
+      opacity: 0;
+      transform: translateY(-200px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0px);
+  }
+}
+.homepage{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: url("../../assets/inicio.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    animation: prueba 1s ease-in-out;
+    
+
+}
+
+.homepage .content {
+    display: flex;
+    height: 85%;
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .homepage .content h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: 'Luckiest Guy', system-ui;
+  }
+  .homepage .content .text {
+    margin-bottom: 50px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+  }
+  .content a {
+    color: #000;
+    display: block;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    background: #fff;
+    border: 2px solid #fff;
+    transition: 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+  }
+  .content img{
+    top: 300px;
+    width: 30vh;
+  }
+  .content a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.3);
+  }
+ .homepage section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px 0 0;
+  }
+  @media screen and (max-width: 860px) {
+    .homepage .content h1 {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .homepage .content .text {
+        font-size: 17px;
+      }
+      .content a {
+        font-size: 17px;
+        padding: 9px 20px;
+      }
+      .homepage section > p {
+        text-align: center;
+      }
+  }
+  .loader {
+    width: 298px;
+    height: 298px;
+    margin: auto;
+    position: relative;
+}
+
+.loader:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #4b8b7b
+    ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    animation: jump7456 1.5s linear infinite;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height:70%; /* Ajusta el tamaño del logo según sea necesario */
+    z-index: 1; /* Asegura que el logo esté por encima del loader */
+    pointer-events: none;
+    animation: logoBounce 1.5s linear infinite; /* Añadir animación para el logo */
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes jump7456 {
+    15% {
+        border-bottom-right-radius: 50%;
+    }
+
+    25% {
+        transform: translateY(9px) rotate(22.5deg);
+    }
+
+    50% {
+        transform: translateY(18px) scale(1, .9) rotate(45deg);
+        border-bottom-right-radius: 40px;
+    }
+
+    75% {
+        transform: translateY(9px) rotate(67.5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(90deg);
+    }
+}
+
+@keyframes logoBounce {
+    0%, 100% {
+        transform: translate(-50%, -50%) translateY(-15px);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(20PX);
+    }
+}
+ .homepage svg{
+  width: 340px;
+  height: 340px;
+}

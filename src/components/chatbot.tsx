@@ -2,18 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function Chatbot() {
   const apiKey = import.meta.env.VITE_API_CHAT;
+    const initialMessage = {
+    role: "assistant",
+    content:
+      "Soy tu asistente virtual especializado en Teoría celular. ¿Qué te gustaría saber sobre las células?"
+  };
 
-  const [messages, setMessages] = useState([
-    {
-      role: "system",
-      content:
-        "Eres un asistente experto en Teoría celular. Solo debes responder preguntas y hablar sobre el tema de las células: su estructura, funciones, tipos, organelos, procesos celulares, etc. Si el usuario pregunta sobre algo fuera de este tema, responde educadamente que solo puedes hablar sobre las células."
-    },
-    {
-      role: "assistant",
-      content: "Soy tu asistente virtual especializado en Teoría celular. ¿Qué te gustaría saber sobre las células?"
-    }
-  ]);
+  const [messages, setMessages] = useState([initialMessage]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -64,6 +59,10 @@ export default function Chatbot() {
     }
   };
 
+    const resetChat = () => {
+    setMessages([initialMessage]);
+    setInput("");
+  };
   return (
     <>
       <input type="checkbox" id="toggle-chat" className="peer hidden" />
@@ -74,7 +73,12 @@ export default function Chatbot() {
         💬 Chat
       </label>
 
-      <div className="hidden peer-checked:flex fixed bottom-16 right-4 w-84 h-1/2 bg-white rounded-lg shadow-xl flex-col max-w-2xl mx-auto p-4 overflow-auto">
+      <div className="hidden peer-checked:flex fixed bottom-16 right-4 w-96 h-1/2 bg-white rounded-lg shadow-xl flex-col max-w-2xl mx-auto p-4 overflow-auto">
+      <div className="flex justify-between items-center mb-4 ">
+
+        <div className="font-bold text-lg">Asistente de Teoría celular</div>
+        <label htmlFor="toggle-chat" className="text-gray-400 text-lg">X</label>
+      </div>
         <div className="flex-1 overflow-y-auto space-y-2 mb-4">
           {messages.map((msg, i) => (
             <div
@@ -101,6 +105,12 @@ export default function Chatbot() {
             placeholder="Escribe tu mensaje..."
             className="flex-1 p-3 border border-gray-300 rounded-2xl shadow-sm focus:outline-none"
           />
+                      <button
+              onClick={resetChat}
+              className="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded-lg text-gray-700"
+            >
+              Limpiar
+            </button>
           <button
             onClick={sendMessage}
             className="px-4 py-2 bg-blue-500 text-white rounded-2xl shadow-md hover:bg-blue-700"
